@@ -90,7 +90,7 @@ class PersonBusinessmanSerializerMainList(ModelSerializer):
         fields = ('avatar','name', 'surname', 'industry', 'locate', 'status')
 
 class PersonCompanySerializerMainList(ModelSerializer):
-
+    #test docker
     class Meta:
         model = Company
         fields = ('avatar','name', 'industry', 'locate', 'status')
