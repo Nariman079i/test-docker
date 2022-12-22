@@ -14,5 +14,5 @@ class UserCreateSerializer(ModelSerializer):
         if DefaultUser.objects.filter(email=validated_data.get('email')).exists():
             raise ValidationError({"error":"Такой пользователь уже существует"})
         user = DefaultUser.objects.create_user(**validated_data)
-        return user.email
+        return user
 
