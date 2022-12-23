@@ -19,7 +19,7 @@ urlpatterns = [
     path('list/bus/', BusinessmanListAPI.as_view()),
 
     path('list/bus/main/', BusinessmanMainListAPI.as_view()),
-    path('list/com/main/', CompanyMainListAPI.as_view() ),
+    path('list/com/main/', CompanyMainListAPI.as_view()),
 
     path('test/',TestRegistration.as_view()),
     path('email/confirmation/<str:email>/', EmailСonfirmation.as_view()),
