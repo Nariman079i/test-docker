@@ -50,5 +50,20 @@ class TestRegistration(APIView):
     def post(self, request):
         return Response({"is Authenticated": True})
 
+class PersonAccountCompanyAPI(ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = PersonCompanySerializerList
+
+    def get_queryset(self):
+        id = self.kwargs.get('pk')
+        return Company.objects.filter(user=self.request.user)
+
+class PersonAccountBusinessmanAPI(ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = PersonBusinessmanSerializerList
+
+    def get_queryset(self):
+        return Bussinesman.objects.filter(user=self.request.user)
+
 
 

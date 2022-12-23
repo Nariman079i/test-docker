@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'djoser',
-    'corsheaders'
+    'corsheaders',
+    'esend',
 ]
 
 MIDDLEWARE = [
@@ -108,6 +109,12 @@ AUTH_PASSWORD_VALIDATORS = [
     # },
 ]
 
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "offer.start@mail.ru"
+EMAIL_HOST_PASSWORD = "EQtq3zRetN46ryTBVgSr"
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
