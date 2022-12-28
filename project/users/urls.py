@@ -15,8 +15,8 @@ urlpatterns = [
     path('create/bus/', BusinessmanCreateAPI.as_view()),
     path('create/com/', CompanyCreateAPI.as_view()),
 
-    path('list/com/', UserBusinessAPI.as_view()),
-    path('list/bus/', UserInvestorAPI.as_view()),
+    path('list/com/', CompanyListAPI.as_view()),
+    path('list/bus/', BusinessmanListAPI.as_view()),
 
     path('list/bus/main/', BusinessmanMainListAPI.as_view()),
     path('list/com/main/', CompanyMainListAPI.as_view()),
