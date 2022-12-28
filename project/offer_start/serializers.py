@@ -95,4 +95,13 @@ class PersonCompanySerializerMainList(ModelSerializer):
         model = Company
         fields = ('avatar','name', 'industry', 'locate', 'status')
 
+class UsersBusinessSerializer(ModelSerializer):
+    class Meta:
+        model = UsersBusiness
+        fields = "__all__"
+
+class UsersInvestorSerializer(ModelSerializer):
+    class Meta:
+        model = UsersInvestor
+        fields = "__all__"
 

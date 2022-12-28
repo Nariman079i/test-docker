@@ -1,9 +1,20 @@
 from rest_framework.views import APIView
 from rest_framework.permissions import *
 from users.serializers import *
+from users.models import *
 from rest_framework.generics import *
 from offer_start.serializers import *
 from rest_framework.response import Response
+
+class UserBusinessAPI(ListAPIView):
+    serializer_class = UsersBusinessSerializer
+    queryset =  UsersBusiness.objects.all()
+    permission_classes = (AllowAny,)
+
+class UserInvestorAPI(ListAPIView):
+    serializer_class = UsersBusinessSerializer
+    queryset = UsersInvestor.objects.all()
+    permission_classes = (AllowAny,)
 
 class CompanyMainListAPI(ListAPIView):
     serializer_class = PersonCompanySerializerMainList
