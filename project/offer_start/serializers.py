@@ -3,15 +3,15 @@ from offer_start.models import *
 from users.serializers import UserCreateSerializer
 
 
-class PersonCompanySerializerCreate(ModelSerializer):
+class PersonBusinessSerializerCreate(ModelSerializer):
     user = HiddenField(default=CurrentUserDefault())
 
     class Meta:
-        model = Company
+        model = Business
         fields = "__all__"
 
     def validate(self, data):
-        if Company.objects.filter(user=data['user']).exists():
+        if Business.objects.filter(user=data['user']).exists():
             raise ValidationError(
                 {
                     'error': 'Такой пользователь уже зарегистрирован'
@@ -37,15 +37,15 @@ class PersonCompanySerializerCreate(ModelSerializer):
         return data
 
 
-class PersonBusinessmanSerializerCreate(ModelSerializer):
+class PersonInvestorSerializerCreate(ModelSerializer):
     user = HiddenField(default=CurrentUserDefault())
 
     class Meta:
-        model = Bussinesman
+        model = Investor
         fields = "__all__"
 
     def validate(self, data):
-        if Bussinesman.objects.filter(user=data['user']).exists():
+        if Investor.objects.filter(user=data['user']).exists():
             raise ValidationError(
                 {
                     'error': 'Такой пользователь уже зарегистрирован'
@@ -69,39 +69,19 @@ class PersonBusinessmanSerializerCreate(ModelSerializer):
         return data
 
 
-class PersonBusinessmanSerializerList(ModelSerializer):
+class PersonInvestorSerializerList(ModelSerializer):
     user = UserCreateSerializer(read_only=True)
 
     class Meta:
-        model = Bussinesman
+        model = Investor
         fields = "__all__"
 
 
-class PersonCompanySerializerList(ModelSerializer):
+class PersonBusinessSerializerList(ModelSerializer):
     user = UserCreateSerializer(read_only=True)
 
     class Meta:
-        model = Company
+        model = Business
         fields = "__all__"
 
-class PersonBusinessmanSerializerMainList(ModelSerializer):
-    class Meta:
-        model = Bussinesman
-        fields = ('avatar','name', 'surname', 'industry', 'locate', 'status')
-
-class PersonCompanySerializerMainList(ModelSerializer):
-    #test docker
-    class Meta:
-        model = Company
-        fields = ('avatar','name', 'industry', 'locate', 'status')
-
-class UsersBusinessSerializer(ModelSerializer):
-    class Meta:
-        model = UsersBusiness
-        fields = "__all__"
-
-class UsersInvestorSerializer(ModelSerializer):
-    class Meta:
-        model = UsersInvestor
-        fields = "__all__"
 

@@ -4,7 +4,7 @@ from users.admin import admin
 User = DefaultUser
 # Create your models here.
 
-class Bussinesman(Model):
+class Investor(Model):
 
     user = OneToOneField(User, on_delete=CASCADE, related_name="buss")
     inn = CharField(max_length=12, blank=True, null=False )
@@ -23,15 +23,15 @@ class Bussinesman(Model):
     status = CharField(max_length=60, blank=True, null=False)
     gender = CharField(max_length=12, blank=True, null=False)
 
-    role = CharField(max_length=12, default="buss",editable=False)
+    role = CharField(max_length=12, default="inv",editable=False)
     class Meta:
-        verbose_name = "Предприниматель"
-        verbose_name_plural = "Предприниматели"
+        verbose_name = "Инвестор"
+        verbose_name_plural = "Инвесторы"
 
     def __str__(self):
         return f"{self.name} {self.surname} {self.inn}"
 
-class Company(Model):
+class Business(Model):
     user = OneToOneField(User, on_delete=CASCADE, related_name="com")
     inn = CharField(max_length=12, blank=True, null=False)
     call_number = CharField(max_length=60, blank=True, null=False)
@@ -48,15 +48,15 @@ class Company(Model):
     status = CharField(max_length=60, blank=True, null=False)
 
 
-    role = CharField(max_length=12, default="com",editable=False)
+    role = CharField(max_length=12, default="bus",editable=False)
 
     class Meta:
-        verbose_name = "Компания"
-        verbose_name_plural = "Компании"
+        verbose_name = "Бизнес"
+        verbose_name_plural = "Бизнесы"
 
     def __str__(self):
         return f"{self.name} {self.inn}"
 
 
-admin.site.register(Company)
-admin.site.register(Bussinesman)
+admin.site.register(Business)
+admin.site.register(Investor)

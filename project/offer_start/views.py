@@ -6,46 +6,28 @@ from rest_framework.generics import *
 from offer_start.serializers import *
 from rest_framework.response import Response
 
-class UserBusinessAPI(ListAPIView):
-    serializer_class = UsersBusinessSerializer
-    queryset =  UsersBusiness.objects.all()
-    permission_classes = (AllowAny,)
 
-class UserInvestorAPI(ListAPIView):
-    serializer_class = UsersBusinessSerializer
-    queryset = UsersInvestor.objects.all()
-    permission_classes = (AllowAny,)
 
-class CompanyMainListAPI(ListAPIView):
-    serializer_class = PersonCompanySerializerMainList
-    queryset = Company.objects.all()
+
+class BusinessListAPI(ListAPIView):
+    serializer_class = PersonBusinessSerializerList
+    queryset = Business.objects.all()
     permission_classes = (AllowAny,)
 
 
-class BusinessmanMainListAPI(ListAPIView):
-    serializer_class = PersonBusinessmanSerializerMainList
-    queryset = Bussinesman.objects.all()
+class InvestorListAPI(ListAPIView):
+    serializer_class = PersonInvestorSerializerList
+    queryset = Investor.objects.all()
     permission_classes = (AllowAny,)
 
-class CompanyListAPI(ListAPIView):
-    serializer_class = PersonCompanySerializerList
-    queryset = Company.objects.all()
-    permission_classes = (AllowAny,)
-
-
-class BusinessmanListAPI(ListAPIView):
-    serializer_class = PersonBusinessmanSerializerList
-    queryset = Bussinesman.objects.all()
-    permission_classes = (AllowAny,)
-
-class CompanyCreateAPI(CreateAPIView):
-    serializer_class = PersonCompanySerializerCreate
-    queryset = Company.objects.all()
+class BusinessCreateAPI(CreateAPIView):
+    serializer_class = PersonBusinessSerializerCreate
+    queryset = Business.objects.all()
     permission_classes = [IsAuthenticated, ]
 
-class BusinessmanCreateAPI(CreateAPIView):
-    serializer_class = PersonBusinessmanSerializerCreate
-    queryset = Bussinesman.objects.all()
+class InvestorCreateAPI(CreateAPIView):
+    serializer_class = PersonInvestorSerializerCreate
+    queryset = Investor.objects.all()
     permission_classes = [IsAuthenticated, ]
 
 
@@ -61,20 +43,20 @@ class TestRegistration(APIView):
     def post(self, request):
         return Response({"is Authenticated": True})
 
-class PersonAccountCompanyAPI(ListAPIView):
+class PersonAccountBusinessAPI(ListAPIView):
     permission_classes = (AllowAny,)
-    serializer_class = PersonCompanySerializerList
+    serializer_class = PersonBusinessSerializerList
 
     def get_queryset(self):
         id = self.kwargs.get('pk')
-        return Company.objects.filter(user=self.request.user)
+        return Business.objects.filter(user=self.request.user)
 
-class PersonAccountBusinessmanAPI(ListAPIView):
+class PersonAccountInvestorAPI(ListAPIView):
     permission_classes = (AllowAny,)
-    serializer_class = PersonBusinessmanSerializerList
+    serializer_class = PersonInvestorSerializerList
 
     def get_queryset(self):
-        return Bussinesman.objects.filter(user=self.request.user)
+        return Investor.objects.filter(user=self.request.user)
 
 
 
