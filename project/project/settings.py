@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
+from project.config import _SECRET_KEY,_EMAIL_HOST_PASSWORD,_EMAIL_PORT
 from pathlib import Path
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8-a#8ik+a+xtp=z_-t!9pwpe-u4tn0+&vrfafvgfb#*^p0skv6'
+SECRET_KEY = _SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -112,9 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_PORT = 2525
+EMAIL_PORT = _EMAIL_PORT
 EMAIL_HOST_USER = "offer.start@mail.ru"
-EMAIL_HOST_PASSWORD = "EQtq3zRetN46ryTBVgSr"
+EMAIL_HOST_PASSWORD = _EMAIL_HOST_PASSWORD
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 

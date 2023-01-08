@@ -1,1 +1,11 @@
 venv
+.gitignore
+project/offer_start/migrations/__pycache__/
+project/project/__pycache__/
+
+project/offer_start/__pycache__/
+
+project/project/__pycache__/urls.cpython-311.pyc
+
+project/project/config.py
+

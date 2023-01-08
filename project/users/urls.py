@@ -7,6 +7,7 @@ from rest_framework_simplejwt.views import (
 )
 from offer_start.views import *
 from esend.views import *
+
 urlpatterns = [
     path('account/bus/', PersonAccountBusinessAPI.as_view()),
     path('account/inv/', PersonAccountInvestorAPI.as_view()),
